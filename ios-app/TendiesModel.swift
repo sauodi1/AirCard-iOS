@@ -8,10 +8,10 @@
 import SwiftUI
 
 public enum TendiePosterType: String, Codable, CaseIterable {
-    case collections = "Collections"
-    case suggestedPhotos = "Suggested Photos"
+    case collections = "المجموعات"
+    case suggestedPhotos = "صور مقترحة"
     case mercury = "Mercury"
-    case container = "App Container"
+    case container = "حاوية التطبيق"
 
     public var systemIcon: String {
         switch self {

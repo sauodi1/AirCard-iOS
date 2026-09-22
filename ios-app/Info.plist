@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>ar</string>
 	<key>CFBundleDisplayName</key>
-	<string>AirCard-iOS</string>
+	<string>AirCard عربي</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -35,9 +35,9 @@
 		<string>_aircardprobe._tcp</string>
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>AirCard-iOS advertises an on-device pairing service so this iPhone can pair with itself, and connects to the local lockdown daemon to run the exploit.</string>
+	<string>يعلن AirCard-iOS عن خدمة اقتران على الجهاز ليتمكن هذا الـ iPhone من الاقتران مع نفسه، ويتصل بخدمة القفل المحلية لتشغيل الاستغلال.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>AirCard-iOS needs photo access to apply custom card skins and passcode themes.</string>
+	<string>يحتاج AirCard-iOS إلى الوصول للصور لتطبيق سمات البطاقات وسمات رمز المرور.</string>
 	<!-- Background: audio keeps the app alive while the user approves the PIN -->
 	<key>UIBackgroundModes</key>
 	<array>
@@ -59,7 +59,7 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>Passcode Theme</string>
+			<string>سمة رمز المرور</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -71,7 +71,7 @@
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>Pairing File</string>
+			<string>ملف الاقتران</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -83,7 +83,7 @@
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>PosterBoard Wallpaper</string>
+			<string>خلفية PosterBoard</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -100,7 +100,7 @@
 			<key>UTTypeIdentifier</key>
 			<string>com.aircard.passthm</string>
 			<key>UTTypeDescription</key>
-			<string>Passcode Theme Archive</string>
+			<string>أرشيف سمة رمز المرور</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
@@ -118,7 +118,7 @@
 			<key>UTTypeIdentifier</key>
 			<string>com.aircard.tendies</string>
 			<key>UTTypeDescription</key>
-			<string>PosterBoard Wallpaper Archive</string>
+			<string>أرشيف خلفية PosterBoard</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
@@ -140,7 +140,7 @@
 			<key>UTTypeIdentifier</key>
 			<string>com.aircard.tendies</string>
 			<key>UTTypeDescription</key>
-			<string>PosterBoard Wallpaper Archive</string>
+			<string>أرشيف خلفية PosterBoard</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
@@ -159,7 +159,7 @@
 			<key>UTTypeIdentifier</key>
 			<string>com.aircard.passthm</string>
 			<key>UTTypeDescription</key>
-			<string>Passcode Theme Archive</string>
+			<string>أرشيف سمة رمز المرور</string>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>

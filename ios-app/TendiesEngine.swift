@@ -51,7 +51,7 @@ public final class TendiesEngine {
             throw NSError(
                 domain: "TendiesEngine",
                 code: -1,
-                userInfo: [NSLocalizedDescriptionKey: "Failed to store wallpaper file at \(destinationURL.path)"]
+                userInfo: [NSLocalizedDescriptionKey: "فشل تخزين ملف الخلفية في \(destinationURL.path)"]
             )
         }
 
@@ -73,7 +73,7 @@ public final class TendiesEngine {
             throw NSError(
                 domain: "TendiesEngine",
                 code: Int(extractRC),
-                userInfo: [NSLocalizedDescriptionKey: "Failed to extract .tendies zip archive (code \(extractRC))"]
+                userInfo: [NSLocalizedDescriptionKey: "فشل استخراج أرشيف .tendies (رمز \(extractRC))"]
             )
         }
 
@@ -211,7 +211,7 @@ public final class TendiesEngine {
                         let s = String(cString: p)
                         al_string_free(p)
                         return s
-                    } ?? "Failed to find PosterBoard container"
+                    } ?? "فشل العثور على حاوية PosterBoard"
                     continuation.resume(throwing: NSError(
                         domain: "TendiesEngine",
                         code: Int(rc),
@@ -262,7 +262,7 @@ public final class TendiesEngine {
             throw NSError(
                 domain: "TendiesEngine",
                 code: 1,
-                userInfo: [NSLocalizedDescriptionKey: "PosterBoard Container path is required."]
+                userInfo: [NSLocalizedDescriptionKey: "مسار حاوية PosterBoard مطلوب."]
             )
         }
 
@@ -470,7 +470,7 @@ public final class TendiesEngine {
                 throw NSError(
                     domain: "TendiesEngine",
                     code: 1,
-                    userInfo: [NSLocalizedDescriptionKey: "Failed to write directory: \(errDesc ?? "exploit error")"]
+                    userInfo: [NSLocalizedDescriptionKey: "فشل كتابة المجلد: \(errDesc ?? "خطأ الاستغلال")"]
                 )
             }
         }
@@ -560,7 +560,7 @@ public final class TendiesEngine {
             throw NSError(
                 domain: "TendiesEngine",
                 code: 1,
-                userInfo: [NSLocalizedDescriptionKey: "Failed to inject descriptor: \(errDesc ?? "exploit error")"]
+                userInfo: [NSLocalizedDescriptionKey: "فشل حقن الواصف: \(errDesc ?? "خطأ الاستغلال")"]
             )
         }
     }

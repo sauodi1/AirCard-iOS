@@ -44,9 +44,9 @@ final class PairingController: ObservableObject {
 
         var errorDescription: String? {
             switch self {
-            case .busy: return "Pairing is already in progress."
-            case .localNetworkDenied: return "Local Network permission is off. Enable it in Settings › AirCard-iOS › Local Network."
-            case .zeroBytes: return "Pairing produced an empty file. Approve the pairing request, then try again."
+            case .busy: return "الاقتران جارٍ بالفعل."
+            case .localNetworkDenied: return "إذن الشبكة المحلية معطّل. فعّله في الإعدادات › AirCard-iOS › الشبكة المحلية."
+            case .zeroBytes: return "أنتج الاقتران ملفاً فارغاً. وافق على طلب الاقتران ثم حاول مرة أخرى."
             case let .failed(msg): return msg
             }
         }
@@ -136,7 +136,7 @@ final class PairingController: ObservableObject {
         keepAlive.stopAll()
         running = false
         pairingPIN = nil
-        pairingStatus = "Cancelled"
+        pairingStatus = "تم الإلغاء"
         resolve(.failure(CancellationError()))
     }
 
@@ -151,14 +151,14 @@ final class PairingController: ObservableObject {
         keepAlive.stopAll()
         running = true
         pairingPIN = nil
-        pairingStatus = "Starting local host…"
+        pairingStatus = "بدء المضيف المحلي…"
 
         Task {
             _ = await localNetwork.request()
             guard running else { return }
 
             keepAlive.startAudio()
-            pairingStatus = "Broadcasting… open Settings to pair"
+            pairingStatus = "البث جارٍ… افتح الإعدادات للاقتران"
             runHost()
         }
     }
@@ -203,7 +203,7 @@ final class PairingController: ObservableObject {
                 )
             } else {
                 let msg = cStr(result.error)
-                outcome = .failure(msg.isEmpty ? "pairing failed (rc=\(rc))" : msg)
+                outcome = .failure(msg.isEmpty ? "فشل الاقتران (rc=\(rc))" : msg)
             }
             al_pairing_result_free(&result)
 
@@ -233,14 +233,14 @@ final class PairingController: ObservableObject {
             let canonical = Self.syncCanonicalPairingFile(from: path)
             let size = (try? FileManager.default.attributesOfItem(atPath: canonical)[.size] as? Int) ?? 0
             if size == 0 {
-                pairingStatus = "Failed: empty pairing file"
+                pairingStatus = "فشل: ملف اقتران فارغ"
                 resolve(.failure(PairingError.zeroBytes))
             } else {
-                pairingStatus = "Paired: \(name) (\(size)B)"
+                pairingStatus = "مقترن: \(name) (\(size)B)"
                 resolve(.success(canonical))
             }
         case let .failure(message):
-            pairingStatus = "Failed: \(message)"
+            pairingStatus = "فشل: \(message)"
             resolve(.failure(PairingError.failed(message)))
         }
     }
@@ -259,12 +259,12 @@ final class PairingController: ObservableObject {
         service.setTXTRecord(NetService.data(fromTXTRecord: txt))
         service.publish()
         netService = service
-        pairingStatus = "Advertising — open Settings › Privacy & Security › Developer Mode"
+        pairingStatus = "الإعلان جارٍ — افتح الإعدادات › الخصوصية والأمان › وضع المطور"
     }
 
     fileprivate func presentPin(_ pin: String) {
         pairingPIN = pin
-        pairingStatus = "Enter PIN \(pin) in Settings › Privacy & Security › Developer Mode › Pair with AirCard-iOS"
+        pairingStatus = "أدخل رمز PIN \(pin) في الإعدادات › الخصوصية والأمان › وضع المطور › الاقتران مع AirCard-iOS"
     }
 
     private func stopAdvertising() {

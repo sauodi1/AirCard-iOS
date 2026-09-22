@@ -49,10 +49,10 @@ struct CardItem: Identifiable, Equatable {
 
 
 enum AppTab: String, CaseIterable, Identifiable {
-    case pairing = "Pairing"
-    case walletCards = "Wallet Cards"
-    case passcodeThemes = "Passcode"
-    case wallpapers = "Wallpapers"
+    case pairing = "الاقتران"
+    case walletCards = "بطاقات Wallet"
+    case passcodeThemes = "رمز المرور"
+    case wallpapers = "الخلفيات"
     var id: String { rawValue }
 }
 
@@ -66,35 +66,35 @@ struct PasscodeThemeInfo: Identifiable {
 }
 
 enum CreatorMode: String, CaseIterable, Identifiable {
-    case applyTheme = "Apply .passthm"
-    case themeCreator = "Create Theme"
+    case applyTheme = "تطبيق .passthm"
+    case themeCreator = "إنشاء سمة"
     var id: String { rawValue }
 }
 
 enum SliceMode: String, CaseIterable, Identifiable {
-    case posterSlice = "Poster Slice"
-    case individualKeys = "Individual Keys"
+    case posterSlice = "تقطيع الملصق"
+    case individualKeys = "مفاتيح فردية"
     var id: String { rawValue }
 }
 
 enum PasscodeLanguageTarget: String, CaseIterable, Identifiable {
-    case all = "All Languages (Universal)"
-    case uk = "Ukrainian (uk)"
-    case ru = "Russian (ru)"
-    case en = "English (en)"
-    case other = "Other / Fallback"
-    case es = "Spanish (es)"
-    case de = "German (de)"
-    case fr = "French (fr)"
-    case pl = "Polish (pl)"
-    case it = "Italian (it)"
-    case pt = "Portuguese (pt)"
-    case tr = "Turkish (tr)"
-    case ja = "Japanese (ja)"
-    case ko = "Korean (ko)"
-    case zh = "Chinese (zh)"
-    case ar = "Arabic (ar)"
-    case he = "Hebrew (he)"
+    case all = "كل اللغات (شامل)"
+    case uk = "الأوكرانية (uk)"
+    case ru = "الروسية (ru)"
+    case en = "الإنجليزية (en)"
+    case other = "أخرى / احتياطي"
+    case es = "الإسبانية (es)"
+    case de = "الألمانية (de)"
+    case fr = "الفرنسية (fr)"
+    case pl = "البولندية (pl)"
+    case it = "الإيطالية (it)"
+    case pt = "البرتغالية (pt)"
+    case tr = "التركية (tr)"
+    case ja = "اليابانية (ja)"
+    case ko = "الكورية (ko)"
+    case zh = "الصينية (zh)"
+    case ar = "العربية (ar)"
+    case he = "العبرية (he)"
 
     var id: String { rawValue }
 
@@ -122,9 +122,9 @@ enum PasscodeLanguageTarget: String, CaseIterable, Identifiable {
 }
 
 enum PasscodeBoldTarget: String, CaseIterable, Identifiable {
-    case both = "Universal (Regular + Bold)"
-    case boldOnly = "Bold Text Only (Fast)"
-    case regularOnly = "Regular Font Only (Fast)"
+    case both = "شامل (عادي + عريض)"
+    case boldOnly = "النص العريض فقط (سريع)"
+    case regularOnly = "الخط العادي فقط (سريع)"
 
     var id: String { rawValue }
 

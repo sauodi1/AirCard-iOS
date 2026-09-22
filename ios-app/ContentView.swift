@@ -42,7 +42,7 @@ struct CreditsSheet: View {
                         Text("AirCard-iOS")
                             .font(.title2.bold())
 
-                        Text("Apple Wallet Skins & Passcode Themes for iOS 18+")
+                        Text("سمات محفظة Apple وسمات رمز المرور لـ iOS 18+")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -55,11 +55,11 @@ struct CreditsSheet: View {
                         // mak5er (Lead & Core Developer)
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
-                                Label("Lead & Core Developer", systemImage: "crown.fill")
+                                Label("المطور الرئيسي والأساسي", systemImage: "crown.fill")
                                     .font(.caption.bold().uppercaseSmallCaps())
                                     .foregroundStyle(.orange)
                                 Spacer()
-                                Text("Chief")
+                                Text("رئيس")
                                     .font(.system(size: 10, weight: .bold, design: .rounded))
                                     .padding(.horizontal, 6)
                                     .padding(.vertical, 2)
@@ -102,11 +102,11 @@ struct CreditsSheet: View {
                         // merybist (Base IPA Developer)
                         VStack(alignment: .leading, spacing: 10) {
                             HStack {
-                                Label("Base IPA Developer", systemImage: "hammer.fill")
+                                Label("مطور الـ IPA الأساسي", systemImage: "hammer.fill")
                                     .font(.caption.bold().uppercaseSmallCaps())
                                     .foregroundStyle(.blue)
                                 Spacer()
-                                Text("Base")
+                                Text("أساس")
                                     .font(.system(size: 10, weight: .bold, design: .rounded))
                                     .padding(.horizontal, 6)
                                     .padding(.vertical, 2)
@@ -153,9 +153,9 @@ struct CreditsSheet: View {
                                     .font(.title3)
                                     .foregroundStyle(.orange)
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text("Core Exploit")
+                                    Text("الاستغلال الأساسي")
                                         .font(.subheadline.bold())
-                                    Text("airlift (AirTraffic sync sandbox escape)")
+                                    Text("airlift (تجاوز عزل AirTraffic sync)")
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }
@@ -168,9 +168,9 @@ struct CreditsSheet: View {
                                     .font(.title3)
                                     .foregroundStyle(.purple)
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text("Passcode Themes")
+                                    Text("سمات رمز المرور")
                                         .font(.subheadline.bold())
-                                    Text(".passthm standard (Cowabunga / Nugget)")
+                                    Text("معيار .passthm (Cowabunga / Nugget)")
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }
@@ -183,9 +183,9 @@ struct CreditsSheet: View {
                                     .font(.title3)
                                     .foregroundStyle(.yellow)
                                 VStack(alignment: .leading, spacing: 2) {
-                                    Text("NeoSpring & PosterBoard")
+                                    Text("NeoSpring و PosterBoard")
                                         .font(.subheadline.bold())
-                                    Text("SpringBoard reload & .tendies wallpapers (@neonmodder123, @skadz108, @rooootdev)")
+                                    Text("إعادة تحميل SpringBoard وخلفيات .tendies (@neonmodder123, @skadz108, @rooootdev)")
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }
@@ -201,11 +201,11 @@ struct CreditsSheet: View {
                 }
                 .padding(.vertical)
             }
-            .navigationTitle("Credits")
+            .navigationTitle("شكر وتقدير")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button("تم") {
                         dismiss()
                     }
                     .bold()
@@ -259,7 +259,7 @@ struct CompactLogView: View {
                     HStack(spacing: 4) {
                         Image(systemName: copied ? "checkmark" : "doc.on.doc")
                             .font(.system(size: 11, weight: .bold))
-                        Text(copied ? "Copied" : "Copy")
+                        Text(copied ? "تم النسخ" : "نسخ")
                             .font(.system(size: 11, weight: .bold))
                     }
                     .foregroundStyle(copied ? .green : .blue)
@@ -355,31 +355,31 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $vm.selectedTab) {
             PairingTab()
-                .tabItem { Label("Pairing", systemImage: "antenna.radiowaves.left.and.right") }
+                .tabItem { Label("الاقتران", systemImage: "antenna.radiowaves.left.and.right") }
                 .tag(AppTab.pairing)
 
             WalletCardsTab()
-                .tabItem { Label("Wallet Cards", systemImage: "creditcard.fill") }
+                .tabItem { Label("بطاقات Wallet", systemImage: "creditcard.fill") }
                 .tag(AppTab.walletCards)
 
             PasscodeThemeTab()
-                .tabItem { Label("Passcode", systemImage: "lock.circle.fill") }
+                .tabItem { Label("رمز المرور", systemImage: "lock.circle.fill") }
                 .tag(AppTab.passcodeThemes)
 
             TendiesView()
-                .tabItem { Label("Wallpapers", systemImage: "photo.stack.fill") }
+                .tabItem { Label("الخلفيات", systemImage: "photo.stack.fill") }
                 .tag(AppTab.wallpapers)
         }
-        .alert("Notice", isPresented: Binding(
+        .alert("تنبيه", isPresented: Binding(
             get: { vm.errorMessage != nil },
             set: { if !$0 { vm.errorMessage = nil } }
         )) {
-            Button("OK") { vm.errorMessage = nil }
+            Button("حسناً") { vm.errorMessage = nil }
         } message: {
             Text(vm.errorMessage ?? "")
         }
-        .alert("Success! 🎉", isPresented: $vm.showSuccessAlert) {
-            Button("OK") {}
+        .alert("نجاح! 🎉", isPresented: $vm.showSuccessAlert) {
+            Button("حسناً") {}
         } message: {
             Text(vm.successAlertMessage)
         }
@@ -415,14 +415,14 @@ struct PairingTab: View {
                             Text("AirCard-iOS")
                                 .font(.title2.bold())
                             Spacer()
-                            Text("iOS \(ProcessInfo.processInfo.operatingSystemVersion.majorVersion) · v1.3")
+                            Text("iOS \(ProcessInfo.processInfo.operatingSystemVersion.majorVersion) · v1.3.1")
                                 .font(.caption.monospaced().bold())
                                 .padding(.horizontal, 8).padding(.vertical, 3)
                                 .background(Color.blue.opacity(0.12))
                                 .foregroundStyle(.blue)
                                 .clipShape(Capsule())
                         }
-                        Text("Apply custom wallet card skins and passcode themes on-device using the AirTraffic sandbox escape.")
+                        Text("طبّق سمات بطاقات المحفظة وسمات رمز المرور على الجهاز باستخدام تجاوز عزل AirTraffic.")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                     }
@@ -430,17 +430,17 @@ struct PairingTab: View {
                 }
 
                 // Network / VPN Status
-                Section("Network") {
+                Section("الشبكة") {
                     VPNStatusRow(vm: vm)
                 }
 
                 // Pairing Status
-                Section("Active Pairing") {
+                Section("الاقتران النشط") {
                     HStack(spacing: 10) {
                         if vm.hasPairingFile {
                             Image(systemName: "checkmark.seal.fill").foregroundStyle(.green)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Ready to exploit ✅")
+                                Text("جاهز للاستغلال ✅")
                                     .font(.subheadline.bold())
                                 Text("\(vm.pairingFileName) (\(vm.pairingFileSizeString))")
                                     .font(.caption.monospaced())
@@ -449,9 +449,9 @@ struct PairingTab: View {
                         } else {
                             Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(.orange)
                             VStack(alignment: .leading, spacing: 2) {
-                                Text("Not Paired")
+                                Text("غير مقترن")
                                     .font(.subheadline.bold())
-                                Text("Tap 'Pair This iPhone' below to pair.")
+                                Text("اضغط «اقتران هذا الـ iPhone» أدناه للاقتران.")
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                             }
@@ -469,30 +469,30 @@ struct PairingTab: View {
                     }
                 }
                 .confirmationDialog(
-                    "Delete pairing session?",
+                    "حذف جلسة الاقتران؟",
                     isPresented: $showDeleteConfirm,
                     titleVisibility: .visible
                 ) {
-                    Button("Delete", role: .destructive) { vm.deletePairingFile() }
-                    Button("Cancel", role: .cancel) {}
+                    Button("حذف", role: .destructive) { vm.deletePairingFile() }
+                    Button("إلغاء", role: .cancel) {}
                 } message: {
-                    Text("The active pairing credentials will be removed.")
+                    Text("سيتم إزالة بيانات اعتماد الاقتران النشطة.")
                 }
 
                 // On-Device Pairing Section (available for all iOS versions)
-                Section("Pair on This iPhone") {
+                Section("الاقتران على هذا الـ iPhone") {
                     if vm.pairingPhase == .pairing {
                         VStack(alignment: .leading, spacing: 12) {
                             HStack(spacing: 8) {
                                 ProgressView().scaleEffect(0.85)
-                                Text(vm.pairingStatus.isEmpty ? "Starting local pairing host…" : vm.pairingStatus)
+                                Text(vm.pairingStatus.isEmpty ? "بدء مضيف الاقتران المحلي…" : vm.pairingStatus)
                                     .font(.subheadline)
                                     .foregroundStyle(.secondary)
                             }
 
                             if let pin = vm.pairingPIN {
                                 VStack(alignment: .leading, spacing: 12) {
-                                    Text("ENTER THIS PIN ON THIS IPHONE:")
+                                    Text("أدخل رمز PIN هذا على هذا الـ IPHONE:")
                                         .font(.caption2.bold().uppercaseSmallCaps())
                                         .foregroundStyle(.secondary)
 
@@ -505,14 +505,14 @@ struct PairingTab: View {
                                             UIPasteboard.general.string = pin
                                             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                         } label: {
-                                            Label("Copy", systemImage: "doc.on.doc")
+                                            Label("نسخ", systemImage: "doc.on.doc")
                                                 .font(.caption.bold())
                                         }
                                         .buttonStyle(.bordered)
                                         .tint(.orange)
                                     }
 
-                                    Text("Settings › Privacy & Security › Developer Mode › Pair with AirCard-iOS")
+                                    Text("الإعدادات › الخصوصية والأمان › وضع المطور › الاقتران مع AirCard-iOS")
                                         .font(.footnote.weight(.semibold))
                                         .foregroundStyle(.primary)
 
@@ -521,7 +521,7 @@ struct PairingTab: View {
                                             UIApplication.shared.open(url)
                                         }
                                     } label: {
-                                        Label("Open Settings App Now", systemImage: "arrow.up.forward.app")
+                                        Label("افتح تطبيق الإعدادات الآن", systemImage: "arrow.up.forward.app")
                                             .bold()
                                             .frame(maxWidth: .infinity, alignment: .center)
                                     }
@@ -539,7 +539,7 @@ struct PairingTab: View {
                                 HStack(spacing: 8) {
                                     Spacer()
                                     Image(systemName: "xmark")
-                                    Text("Cancel Pairing")
+                                    Text("إلغاء الاقتران")
                                     Spacer()
                                 }
                                 .font(.headline)
@@ -556,7 +556,7 @@ struct PairingTab: View {
                                     .font(.subheadline.weight(.medium))
                                     .foregroundStyle(
                                         vm.pairingStatus.contains("✅") ? .green :
-                                        vm.pairingStatus.contains("❌") || vm.pairingStatus.contains("failed") ? .red :
+                                        vm.pairingStatus.contains("❌") || vm.pairingStatus.contains("فشل") || vm.pairingStatus.contains("failed") ? .red :
                                         .secondary
                                     )
                                     .multilineTextAlignment(.center)
@@ -570,7 +570,7 @@ struct PairingTab: View {
                                     Spacer()
                                     Image(systemName: "antenna.radiowaves.left.and.right")
                                         .font(.body.weight(.semibold))
-                                    Text(vm.hasPairingFile ? "Re-Pair This iPhone" : "Pair This iPhone")
+                                    Text(vm.hasPairingFile ? "إعادة اقتران هذا الـ iPhone" : "اقتران هذا الـ iPhone")
                                         .font(.headline)
                                     Spacer()
                                 }
@@ -586,7 +586,7 @@ struct PairingTab: View {
                 if !vm.log.isEmpty {
                     Section {
                         CompactLogView(
-                            title: "Activity Log (\(vm.log.count) lines)",
+                            title: "سجل النشاط (\(vm.log.count) سطر)",
                             lines: vm.log,
                             onClear: { vm.log.removeAll() }
                         )
@@ -606,7 +606,7 @@ struct PairingTab: View {
                         HStack(spacing: 4) {
                             Image(systemName: "heart.fill")
                                 .font(.caption)
-                            Text("Credits")
+                            Text("شكر وتقدير")
                                 .font(.caption.bold())
                         }
                         .foregroundStyle(.pink)
@@ -646,11 +646,11 @@ struct VPNStatusRow: View {
                     .font(.title3)
                     .foregroundStyle(vm.vpnUp ? .green : .orange)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(vm.vpnUp ? "Loopback VPN Active" : "Loopback VPN Not Detected")
+                    Text(vm.vpnUp ? "VPN الحلقي نشط" : "لم يُكتشف VPN الحلقي")
                         .font(.subheadline.bold())
                     Text(vm.vpnUp
-                         ? "RSD tunnel ready — exploit will connect."
-                         : "Connect LocalDevVPN before running flashes.")
+                         ? "نفق RSD جاهز — سيتصل الاستغلال."
+                         : "وصّل LocalDevVPN قبل تشغيل الوميض.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -658,17 +658,17 @@ struct VPNStatusRow: View {
 
             if !vm.vpnUp {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Setup LocalDevVPN:")
+                    Text("إعداد LocalDevVPN:")
                         .font(.caption.bold())
                     ForEach([
-                        "1. Open LocalDevVPN app and tap Connect.",
-                        "2. Return to AirCard-iOS — status indicator turns green."
+                        "١. افتح تطبيق LocalDevVPN واضغط اتصال.",
+                        "٢. ارجع إلى AirCard-iOS — يتحول المؤشر إلى الأخضر."
                     ], id: \.self) { step in
                         Text(step)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
-                    Link("Launch LocalDevVPN",
+                    Link("تشغيل LocalDevVPN",
                          destination: URL(string: "localdevvpn://")!)
                         .font(.caption.bold())
                 }
@@ -678,7 +678,7 @@ struct VPNStatusRow: View {
             }
 
             HStack(spacing: 8) {
-                Text("Device IP:")
+                Text("عنوان IP للجهاز:")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 TextField("10.7.0.1", text: $vm.deviceIP)
@@ -801,11 +801,11 @@ struct WalletCardView: View {
                                     .font(.system(size: 32))
                                     .foregroundStyle(.blue)
 
-                                Text("Assign Card Skin")
+                                Text("تعيين سمة البطاقة")
                                     .font(.subheadline.bold())
                                     .foregroundStyle(.primary)
 
-                                Text("Tap to choose photo")
+                                Text("اضغط لاختيار صورة")
                                     .font(.caption2)
                                     .foregroundStyle(.secondary)
                             }
@@ -827,7 +827,7 @@ struct WalletCardView: View {
                 ))
                 .labelsHidden()
 
-                Text("Card #\(cardIndex + 1)")
+                Text("بطاقة #\(cardIndex + 1)")
                     .font(.system(size: 13, weight: .semibold))
 
                 // Monospace Hash Pill with Copy Button
@@ -928,7 +928,7 @@ struct WalletCardsTab: View {
                 Color.clear.frame(height: 60)
             }
             .background(Color(uiColor: .systemGroupedBackground))
-            .navigationTitle("Wallet Cards (\(vm.cards.count))")
+            .navigationTitle("بطاقات Wallet (\(vm.cards.count))")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
@@ -936,7 +936,7 @@ struct WalletCardsTab: View {
                     } label: {
                         HStack(spacing: 4) {
                             Image(systemName: vm.isScanningCards ? "stop.circle.fill" : "wave.3.left.circle")
-                            Text(vm.isScanningCards ? "Stop Scan" : "Scan Cards")
+                            Text(vm.isScanningCards ? "إيقاف المسح" : "مسح البطاقات")
                         }
                         .font(.subheadline.bold())
                         .foregroundStyle(vm.isScanningCards ? .red : .blue)
@@ -948,14 +948,14 @@ struct WalletCardsTab: View {
                         Button {
                             showAddSheet = true
                         } label: {
-                            Label("Add Card Manually", systemImage: "plus")
+                            Label("إضافة بطاقة يدوياً", systemImage: "plus")
                         }
                         if !vm.cards.isEmpty {
                             Button {
                                 activePicker = .bulkAll
                                 showSourceDialog = true
                             } label: {
-                                Label("Set Skin for All Cards...", systemImage: "photo.on.rectangle.angled")
+                                Label("تعيين سمة لكل البطاقات...", systemImage: "photo.on.rectangle.angled")
                             }
 
                             Divider()
@@ -963,13 +963,13 @@ struct WalletCardsTab: View {
                             Button {
                                 vm.selectAllCards(true)
                             } label: {
-                                Label("Select All", systemImage: "checkmark.circle")
+                                Label("تحديد الكل", systemImage: "checkmark.circle")
                             }
 
                             Button {
                                 vm.selectAllCards(false)
                             } label: {
-                                Label("Deselect All", systemImage: "circle")
+                                Label("إلغاء تحديد الكل", systemImage: "circle")
                             }
 
                             Divider()
@@ -979,7 +979,7 @@ struct WalletCardsTab: View {
                                     vm.clearAllCards()
                                 }
                             } label: {
-                                Label("Clear All Cards", systemImage: "trash")
+                                Label("مسح كل البطاقات", systemImage: "trash")
                             }
 
                             Divider()
@@ -987,7 +987,7 @@ struct WalletCardsTab: View {
                             Button {
                                 showCredits = true
                             } label: {
-                                Label("Credits", systemImage: "heart.fill")
+                                Label("شكر وتقدير", systemImage: "heart.fill")
                             }
                         }
                     } label: {
@@ -1010,18 +1010,18 @@ struct WalletCardsTab: View {
                     showAddSheet = false
                 }
             }
-            .confirmationDialog("Choose Image Source", isPresented: $showSourceDialog, titleVisibility: .visible) {
+            .confirmationDialog("اختر مصدر الصورة", isPresented: $showSourceDialog, titleVisibility: .visible) {
                 Button {
                     isPhotosPickerPresented = true
                 } label: {
-                    Label("Photo Library", systemImage: "photo.on.rectangle")
+                    Label("مكتبة الصور", systemImage: "photo.on.rectangle")
                 }
                 Button {
                     isDocumentPickerPresented = true
                 } label: {
-                    Label("Choose from Files…", systemImage: "folder")
+                    Label("اختر من الملفات…", systemImage: "folder")
                 }
-                Button("Cancel", role: .cancel) {
+                Button("إلغاء", role: .cancel) {
                     activePicker = nil
                 }
             }
@@ -1083,19 +1083,19 @@ struct WalletCardsTab: View {
                 HStack {
                     if vm.isScanningCards {
                         ProgressView().scaleEffect(0.85)
-                        Text("Live Scanner Active")
+                        Text("الماسح المباشر نشط")
                             .font(.subheadline.bold())
                             .foregroundStyle(.blue)
                     } else {
                         Image(systemName: "wave.3.left.circle")
                             .foregroundStyle(.secondary)
-                        Text("Scanner Status")
+                        Text("حالة الماسح")
                             .font(.subheadline.bold())
                             .foregroundStyle(.secondary)
                     }
                     Spacer()
                     if vm.isScanningCards {
-                        Button("Stop") {
+                        Button("إيقاف") {
                             vm.stopCardScanning()
                         }
                         .font(.caption.bold())
@@ -1106,7 +1106,7 @@ struct WalletCardsTab: View {
                 }
                 Text(vm.scanStatusText)
                     .font(.caption)
-                    .foregroundStyle(vm.scanStatusText.contains("stopped") || vm.scanStatusText.contains("error") ? .orange : .secondary)
+                    .foregroundStyle(vm.scanStatusText.contains("stopped") || vm.scanStatusText.contains("توقف") || vm.scanStatusText.contains("error") || vm.scanStatusText.contains("خطأ") ? .orange : .secondary)
             }
             .padding(14)
             .background(vm.isScanningCards ? Color.blue.opacity(0.12) : Color(uiColor: .secondarySystemBackground))
@@ -1146,7 +1146,7 @@ struct WalletCardsTab: View {
 
             if !vm.cardFlashLog.isEmpty {
                 CompactLogView(
-                    title: "Flash Log (\(vm.cardFlashLog.count) lines)",
+                    title: "سجل الوميض (\(vm.cardFlashLog.count) سطر)",
                     lines: vm.cardFlashLog,
                     onClear: { vm.cardFlashLog.removeAll() }
                 )
@@ -1166,17 +1166,17 @@ struct WalletCardsTab: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle(tint: .white))
                         .scaleEffect(0.75)
-                    Text("Flashing…")
+                    Text("جارٍ الوميض…")
                         .font(.system(size: 13, weight: .semibold))
                 } else if case .done(let ok) = vm.cardFlashPhase, !ok {
                     Image(systemName: "arrow.clockwise")
                         .font(.system(size: 12, weight: .semibold))
-                    Text("Retry")
+                    Text("إعادة المحاولة")
                         .font(.system(size: 13, weight: .semibold))
                 } else {
                     Image(systemName: "bolt.fill")
                         .font(.system(size: 12, weight: .semibold))
-                    Text("Flash")
+                    Text("وميض")
                         .font(.system(size: 13, weight: .semibold))
                 }
             }
@@ -1200,7 +1200,7 @@ struct WalletCardsTab: View {
                 .font(.system(size: 56))
                 .foregroundStyle(.blue.opacity(0.8))
 
-            Text("No Cards Detected Yet")
+            Text("لم يتم اكتشاف بطاقات بعد")
                 .font(.title3.bold())
 
             VStack(alignment: .leading, spacing: 10) {
@@ -1208,19 +1208,19 @@ struct WalletCardsTab: View {
                     Text("1.")
                         .bold()
                         .foregroundStyle(.blue)
-                    Text("Tap **Scan Cards** in the toolbar above.")
+                    Text("اضغط **مسح البطاقات** في شريط الأدوات أعلاه.")
                 }
                 HStack(alignment: .top, spacing: 10) {
                     Text("2.")
                         .bold()
                         .foregroundStyle(.blue)
-                    Text("On this iPhone, **double-click the Side button** (Apple Pay), authenticate with **Face ID**, and **tap your card**.")
+                    Text("على هذا الـ iPhone، **انقر مرتين على الزر الجانبي** (Apple Pay)، وصدّق بـ **Face ID**، ثم **اضغط على بطاقتك**.")
                 }
                 HStack(alignment: .top, spacing: 10) {
                     Text("3.")
                         .bold()
                         .foregroundStyle(.blue)
-                    Text("Your card will appear here automatically!")
+                    Text("ستظهر بطاقتك هنا تلقائياً!")
                 }
             }
             .font(.subheadline)
@@ -1237,7 +1237,7 @@ struct WalletCardsTab: View {
                     HStack(spacing: 6) {
                         Spacer()
                         Image(systemName: vm.isScanningCards ? "stop.circle.fill" : "wave.3.left.circle")
-                        Text(vm.isScanningCards ? "Stop Scan" : "Scan Cards")
+                        Text(vm.isScanningCards ? "إيقاف المسح" : "مسح البطاقات")
                         Spacer()
                     }
                     .font(.headline)
@@ -1254,7 +1254,7 @@ struct WalletCardsTab: View {
                     HStack(spacing: 6) {
                         Spacer()
                         Image(systemName: "plus")
-                        Text("Add Manually")
+                        Text("إضافة يدوياً")
                         Spacer()
                     }
                     .font(.headline)
@@ -1282,27 +1282,27 @@ struct AddCardSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Card Hash") {
-                    TextField("Paste card hash (e.g. M6nDwZrkYbFl…)", text: $hashText, axis: .vertical)
+                Section("هاش البطاقة") {
+                    TextField("الصق هاش البطاقة (مثال M6nDwZrkYbFl…)", text: $hashText, axis: .vertical)
                         .font(.system(.body, design: .monospaced))
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .lineLimit(4...8)
                 }
                 Section {
-                    Text("You can add multiple hashes at once — separate them with spaces, commas, or newlines.")
+                    Text("يمكنك إضافة عدة هاشات دفعة واحدة — افصل بينها بمسافات أو فواصل أو أسطر جديدة.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("Add Card")
+            .navigationTitle("إضافة بطاقة")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") { dismiss() }
+                    Button("إلغاء") { dismiss() }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Add") { onAdd() }
+                    Button("إضافة") { onAdd() }
                         .disabled(hashText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                         .bold()
                 }
@@ -1322,7 +1322,7 @@ struct PasscodeThemeTab: View {
             Form {
                 // Mode picker
                 Section {
-                    Picker("Mode", selection: $vm.passcodeMode) {
+                    Picker("الوضع", selection: $vm.passcodeMode) {
                         ForEach(CreatorMode.allCases) { mode in
                             Text(mode.rawValue).tag(mode)
                         }
@@ -1340,7 +1340,7 @@ struct PasscodeThemeTab: View {
                 if !vm.passthmFlashLog.isEmpty {
                     Section {
                         CompactLogView(
-                            title: "Flash Log (\(vm.passthmFlashLog.count) lines)",
+                            title: "سجل الوميض (\(vm.passthmFlashLog.count) سطر)",
                             lines: vm.passthmFlashLog,
                             onClear: { vm.passthmFlashLog.removeAll() }
                         )
@@ -1350,7 +1350,7 @@ struct PasscodeThemeTab: View {
             .safeAreaInset(edge: .bottom) {
                 Color.clear.frame(height: 60)
             }
-            .navigationTitle("Passcode Theme")
+            .navigationTitle("سمة رمز المرور")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -1378,7 +1378,7 @@ struct ApplyThemeSection: View {
     var body: some View {
         // Themes dropped directly into Documents folder
         if !vm.documentsThemes.isEmpty {
-            Section("Themes in App Folder (On My iPhone › AirCard-iOS)") {
+            Section("السمات في مجلد التطبيق (على الـ iPhone › AirCard-iOS)") {
                 ForEach(vm.documentsThemes, id: \.self) { file in
                     HStack {
                         Image(systemName: "paintpalette.fill")
@@ -1386,7 +1386,7 @@ struct ApplyThemeSection: View {
                         Text(file)
                             .font(.system(size: 13, design: .monospaced))
                         Spacer()
-                        Button("Load") {
+                        Button("تحميل") {
                             vm.loadPassthmFromDocuments(filename: file)
                         }
                         .font(.caption.bold())
@@ -1397,12 +1397,12 @@ struct ApplyThemeSection: View {
             }
         }
 
-        Section("Browse Files") {
+        Section("تصفح الملفات") {
             HStack {
                 Button {
                     showDocumentPicker = true
                 } label: {
-                    Label(vm.loadedTheme == nil ? "Choose .passthm from Files…" : "Change .passthm…",
+                    Label(vm.loadedTheme == nil ? "اختر .passthm من الملفات…" : "تغيير .passthm…",
                           systemImage: "doc.badge.plus")
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
@@ -1411,7 +1411,7 @@ struct ApplyThemeSection: View {
                     Button {
                         vm.clearLoadedTheme()
                     } label: {
-                        Text("Clear")
+                        Text("مسح")
                             .font(.caption.bold())
                             .foregroundStyle(.red)
                     }
@@ -1430,20 +1430,20 @@ struct ApplyThemeSection: View {
         }
 
         if let theme = vm.loadedTheme {
-            Section("Interactive Lock Screen Preview") {
+            Section("معاينة تفاعلية لشاشة القفل") {
                 KeypadPreviewView(keys: theme.keysPreview)
                     .listRowInsets(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
                     .listRowBackground(Color.clear)
             }
 
-            Section("Theme Information") {
-                LabeledContent("Files in theme", value: "\(theme.fileCount)")
-                LabeledContent("Digits styled", value: "\(theme.keysPreview.count) keys")
+            Section("معلومات السمة") {
+                LabeledContent("ملفات في السمة", value: "\(theme.fileCount)")
+                LabeledContent("أرقام مُنمّقة", value: "\(theme.keysPreview.count) مفاتيح")
 
                 Button {
                     vm.adoptThemeIntoCreator()
                 } label: {
-                    Label("Edit in Theme Creator", systemImage: "pencil")
+                    Label("تعديل في منشئ السمات", systemImage: "pencil")
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .buttonStyle(.bordered)
@@ -1461,7 +1461,7 @@ struct ApplyThemeSection: View {
                         HStack(spacing: 8) {
                             Spacer()
                             Image(systemName: "trash")
-                            Text("Remove / Unload Theme")
+                            Text("إزالة / إلغاء تحميل السمة")
                             Spacer()
                         }
                         .font(.headline)
@@ -1482,7 +1482,7 @@ struct ApplyThemeSection: View {
             HStack(spacing: 10) {
                 ProgressView()
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Flashing Theme…").font(.subheadline.bold())
+                    Text("جارٍ وميض السمة…").font(.subheadline.bold())
                     ProgressView(value: vm.passthmFlashProgress)
                 }
             }
@@ -1494,7 +1494,7 @@ struct ApplyThemeSection: View {
                 HStack(spacing: 8) {
                     Spacer()
                     Image(systemName: "arrow.clockwise")
-                    Text("Retry Flash Theme")
+                    Text("إعادة وميض السمة")
                     Spacer()
                 }
                 .font(.headline)
@@ -1511,7 +1511,7 @@ struct ApplyThemeSection: View {
                 HStack(spacing: 8) {
                     Spacer()
                     Image(systemName: "bolt.fill")
-                    Text("Flash Theme to iPhone")
+                    Text("وميض السمة إلى الـ iPhone")
                     Spacer()
                 }
                 .font(.headline)
@@ -1536,20 +1536,20 @@ struct PasscodeTargetSection: View {
                     Image(systemName: "bolt.badge.clock")
                         .foregroundColor(.blue)
                         .font(.headline)
-                    Text("Flash & Language Target")
+                    Text("هدف الوميض واللغة")
                         .font(.headline)
                 }
 
                 // 1. Target System
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("System Caches")
+                    Text("ذاكرة النظام المؤقتة")
                         .font(.caption.bold())
                         .foregroundColor(.secondary)
-                    Picker("System Caches", selection: $vm.targetTelephonyVersion) {
+                    Picker("ذاكرة النظام المؤقتة", selection: $vm.targetTelephonyVersion) {
                         Text("TelephonyUI-10 (iOS 18+)").tag("TelephonyUI-10")
                         Text("TelephonyUI-9 (iOS 16–17)").tag("TelephonyUI-9")
                         Text("TelephonyUI-8 (iOS 14–15)").tag("TelephonyUI-8")
-                        Text("Universal (All)").tag("all")
+                        Text("شامل (الكل)").tag("all")
                     }
                     .pickerStyle(.menu)
                     .labelsHidden()
@@ -1559,10 +1559,10 @@ struct PasscodeTargetSection: View {
 
                 // 2. System Language
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("System Language")
+                    Text("لغة النظام")
                         .font(.caption.bold())
                         .foregroundColor(.secondary)
-                    Picker("System Language", selection: $vm.passcodeLanguageTarget) {
+                    Picker("لغة النظام", selection: $vm.passcodeLanguageTarget) {
                         ForEach(PasscodeLanguageTarget.allCases) { item in
                             Text(item.rawValue).tag(item)
                         }
@@ -1575,10 +1575,10 @@ struct PasscodeTargetSection: View {
 
                 // 3. Font Weight / Style
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Font Weight / Style")
+                    Text("وزن / نمط الخط")
                         .font(.caption.bold())
                         .foregroundColor(.secondary)
-                    Picker("Font Weight / Style", selection: $vm.passcodeBoldTarget) {
+                    Picker("وزن / نمط الخط", selection: $vm.passcodeBoldTarget) {
                         ForEach(PasscodeBoldTarget.allCases) { item in
                             Text(item.rawValue).tag(item)
                         }
@@ -1595,12 +1595,12 @@ struct PasscodeTargetSection: View {
                         .padding(.top, 1)
 
                     if vm.passcodeLanguageTarget == .all && vm.passcodeBoldTarget == .both {
-                        Text("Universal mode flashes ~600 files for all languages & Bold text. Selecting a specific language (e.g. Ukrainian) speeds up flashing dramatically.")
+                        Text("الوضع الشامل يومض ~٦٠٠ ملف لجميع اللغات والنص العريض. اختيار لغة محددة (مثل الأوكرانية) يسرّع الوميض كثيراً.")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
                     } else {
-                        Text("Fast mode selected: only targets \(vm.passcodeLanguageTarget.rawValue) with \(vm.passcodeBoldTarget.rawValue).")
+                        Text("الوضع السريع محدد: يستهدف فقط \(vm.passcodeLanguageTarget.rawValue) مع \(vm.passcodeBoldTarget.rawValue).")
                             .font(.caption2)
                             .foregroundColor(.primary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -1628,7 +1628,7 @@ struct ThemeCreatorSection: View {
     @State private var selectedPoster: [PhotosPickerItem] = []
 
     var body: some View {
-        Section("Slice Mode") {
+        Section("وضع التقطيع") {
             Picker("", selection: $vm.sliceMode) {
                 ForEach(SliceMode.allCases) { m in
                     Text(m.rawValue).tag(m)
@@ -1644,7 +1644,7 @@ struct ThemeCreatorSection: View {
         }
 
         // Preview
-        Section("Interactive Lock Screen Preview") {
+        Section("معاينة تفاعلية لشاشة القفل") {
             KeypadPreviewView(keys: vm.effectiveKeys)
                 .listRowInsets(EdgeInsets(top: 6, leading: 6, bottom: 6, trailing: 6))
                 .listRowBackground(Color.clear)
@@ -1664,7 +1664,7 @@ struct ThemeCreatorSection: View {
                         HStack(spacing: 8) {
                             Spacer()
                             Image(systemName: "square.and.arrow.up")
-                            Text("Export .passthm...")
+                            Text("تصدير .passthm...")
                             Spacer()
                         }
                         .font(.headline)
@@ -1679,7 +1679,7 @@ struct ThemeCreatorSection: View {
                         HStack(spacing: 8) {
                             Spacer()
                             Image(systemName: "trash")
-                            Text("Clear All")
+                            Text("مسح الكل")
                             Spacer()
                         }
                         .font(.headline)
@@ -1696,27 +1696,27 @@ struct ThemeCreatorSection: View {
 
     private var posterSliceSection: some View {
         Group {
-            Section("Poster Image") {
+            Section("صورة الملصق") {
                 Button {
                     showPosterSourceDialog = true
                 } label: {
-                    Label(vm.posterImage == nil ? "Select Photo for Keypad…" : "Change Photo…",
+                    Label(vm.posterImage == nil ? "اختر صورة للوحة المفاتيح…" : "تغيير الصورة…",
                           systemImage: "photo")
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
-            .confirmationDialog("Choose Poster Image Source", isPresented: $showPosterSourceDialog, titleVisibility: .visible) {
+            .confirmationDialog("اختر مصدر صورة الملصق", isPresented: $showPosterSourceDialog, titleVisibility: .visible) {
                 Button {
                     isPosterPhotosPickerPresented = true
                 } label: {
-                    Label("Photo Library", systemImage: "photo.on.rectangle")
+                    Label("مكتبة الصور", systemImage: "photo.on.rectangle")
                 }
                 Button {
                     isPosterDocumentPickerPresented = true
                 } label: {
-                    Label("Choose from Files…", systemImage: "folder")
+                    Label("اختر من الملفات…", systemImage: "folder")
                 }
-                Button("Cancel", role: .cancel) {}
+                Button("إلغاء", role: .cancel) {}
             }
             .photosPicker(
                 isPresented: $isPosterPhotosPickerPresented,
@@ -1747,18 +1747,18 @@ struct ThemeCreatorSection: View {
             }
 
             if vm.posterImage != nil {
-                Section("Slicing Style") {
+                Section("نمط التقطيع") {
                     VStack(alignment: .leading, spacing: 6) {
                         Picker("", selection: $vm.maskToCircles) {
-                            Text("Seamless Poster").tag(false)
-                            Text("Circle Buttons").tag(true)
+                            Text("ملصق متواصل").tag(false)
+                            Text("أزرار دائرية").tag(true)
                         }
                         .pickerStyle(.segmented)
                         .onChange(of: vm.maskToCircles) { _, _ in
                             vm.updatePosterSlicing()
                         }
 
-                        Text(vm.maskToCircles ? "Artwork is clipped into individual circular button icons." : "Seamless artwork spans across dialer keys without circular cuts (Adobe Dog style).")
+                        Text(vm.maskToCircles ? "يُقص العمل الفني إلى أيقونات أزرار دائرية منفصلة." : "يمتد العمل الفني المتواصل عبر مفاتيح الاتصال دون قص دائري (أسلوب Adobe Dog).")
                             .font(.caption2)
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -1769,11 +1769,11 @@ struct ThemeCreatorSection: View {
                 Section {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
-                            Text("Zoom & Framing")
+                            Text("التكبير والإطار")
                                 .font(.caption.bold())
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Button("Reset Position") {
+                            Button("إعادة تعيين الموضع") {
                                 withAnimation(.spring()) {
                                     vm.resetPosterPosition()
                                 }
@@ -1805,7 +1805,7 @@ struct ThemeCreatorSection: View {
                             Image(systemName: "hand.draw")
                                 .foregroundColor(.secondary)
                                 .font(.caption2)
-                            Text("Drag anywhere on the dialer preview to reposition")
+                            Text("اسحب في أي مكان على معاينة الاتصال لإعادة التموضع")
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                         }
@@ -1817,8 +1817,8 @@ struct ThemeCreatorSection: View {
     }
 
     private var individualKeysSection: some View {
-        Section("Individual Keys") {
-            Text("Tap a button row to assign a custom image.")
+        Section("مفاتيح فردية") {
+            Text("اضغط صف زر لتعيين صورة مخصصة.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
 
@@ -1841,7 +1841,7 @@ struct ThemeCreatorSection: View {
                     }
 
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Key \(btn.digit)")
+                        Text("مفتاح \(btn.digit)")
                             .font(.subheadline.weight(.medium))
                         if !btn.letters.isEmpty {
                             Text(btn.letters)
@@ -1874,18 +1874,18 @@ struct ThemeCreatorSection: View {
                 }
             }
         }
-        .confirmationDialog("Choose Key \(selectedDigitForPicker ?? "") Image Source", isPresented: $showKeySourceDialog, titleVisibility: .visible) {
+        .confirmationDialog("اختر مصدر صورة المفتاح \(selectedDigitForPicker ?? "")", isPresented: $showKeySourceDialog, titleVisibility: .visible) {
             Button {
                 isKeyPhotosPickerPresented = true
             } label: {
-                Label("Photo Library", systemImage: "photo.on.rectangle")
+                Label("مكتبة الصور", systemImage: "photo.on.rectangle")
             }
             Button {
                 isKeyDocumentPickerPresented = true
             } label: {
-                Label("Choose from Files…", systemImage: "folder")
+                Label("اختر من الملفات…", systemImage: "folder")
             }
-            Button("Cancel", role: .cancel) {
+            Button("إلغاء", role: .cancel) {
                 selectedDigitForPicker = nil
             }
         }
@@ -1934,7 +1934,7 @@ struct ThemeCreatorSection: View {
             HStack(spacing: 10) {
                 ProgressView()
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Flashing Theme…").font(.subheadline.bold())
+                    Text("جارٍ وميض السمة…").font(.subheadline.bold())
                     ProgressView(value: vm.passthmFlashProgress)
                 }
             }
@@ -1946,7 +1946,7 @@ struct ThemeCreatorSection: View {
                 HStack(spacing: 8) {
                     Spacer()
                     Image(systemName: "arrow.clockwise")
-                    Text("Retry Flash Theme")
+                    Text("إعادة وميض السمة")
                     Spacer()
                 }
                 .font(.headline)
@@ -1963,7 +1963,7 @@ struct ThemeCreatorSection: View {
                 HStack(spacing: 8) {
                     Spacer()
                     Image(systemName: "bolt.fill")
-                    Text("Flash Theme to iPhone")
+                    Text("وميض السمة إلى الـ iPhone")
                     Spacer()
                 }
                 .font(.headline)
@@ -2077,7 +2077,7 @@ struct KeypadPreviewView: View {
                     HStack(spacing: 5) {
                         Image(systemName: "hand.draw.fill")
                             .font(.system(size: 10))
-                        Text("Drag preview to reposition")
+                        Text("اسحب المعاينة لإعادة التموضع")
                             .font(.system(size: 11, weight: .medium))
                     }
                     .foregroundStyle(.white.opacity(0.65))

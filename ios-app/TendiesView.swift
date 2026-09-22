@@ -54,7 +54,7 @@ struct TendiesView: View {
                         HStack(spacing: 8) {
                             Spacer()
                             Image(systemName: "doc.badge.plus")
-                            Text(vm.tendieItems.isEmpty ? "Choose .tendies from Files…" : "Import More Wallpapers…")
+                            Text(vm.tendieItems.isEmpty ? "اختر .tendies من الملفات…" : "استيراد المزيد من الخلفيات…")
                             Spacer()
                         }
                         .font(.headline)
@@ -65,9 +65,9 @@ struct TendiesView: View {
                     .tint(.blue)
                 } footer: {
                     if vm.posterBoardContainer.isEmpty {
-                        Text("PosterBoard container will be auto-detected automatically on flash.")
+                        Text("سيتم اكتشاف حاوية PosterBoard تلقائياً عند الوميض.")
                     } else {
-                        Text("Target: PosterBoard container detected ✅")
+                        Text("الهدف: تم اكتشاف حاوية PosterBoard ✅")
                     }
                 }
 
@@ -75,9 +75,9 @@ struct TendiesView: View {
                 Section {
                     Toggle(isOn: $vm.resetPBProtections) {
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Force PosterBoard Cache Refresh")
+                            Text("فرض تحديث ذاكرة PosterBoard المؤقتة")
                                 .font(.subheadline.weight(.medium))
-                            Text("Resets file protections so iOS re-indexes wallpapers immediately")
+                            Text("يعيد تعيين حماية الملفات ليُعيد iOS فهرسة الخلفيات فوراً")
                                 .font(.caption2)
                                 .foregroundColor(.secondary)
                         }
@@ -88,11 +88,11 @@ struct TendiesView: View {
                 if !vm.tendieItems.isEmpty {
                     Section {
                         HStack {
-                            Text("\(vm.tendieItems.count) Wallpapers Imported")
+                            Text("\(vm.tendieItems.count) خلفيات مستوردة")
                                 .font(.caption.bold())
                                 .foregroundColor(.secondary)
                             Spacer()
-                            Button(selectedAll ? "Deselect All" : "Select All") {
+                            Button(selectedAll ? "إلغاء تحديد الكل" : "تحديد الكل") {
                                 let target = !selectedAll
                                 for i in 0..<vm.tendieItems.count {
                                     vm.tendieItems[i].isSelected = target
@@ -109,7 +109,7 @@ struct TendiesView: View {
                             }
                         }
                     } header: {
-                        Text("Wallpapers Gallery")
+                        Text("معرض الخلفيات")
                     }
                 } else {
                     Section {
@@ -117,10 +117,10 @@ struct TendiesView: View {
                             Image(systemName: "photo.stack")
                                 .font(.system(size: 32))
                                 .foregroundColor(.secondary)
-                            Text("No .tendies wallpapers loaded yet")
+                            Text("لم تُحمَّل خلفيات .tendies بعد")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
-                            Text("Tap 'Choose .tendies from Files' or copy wallpapers into On My iPhone › AirCard-iOS.")
+                            Text("اضغط «اختر .tendies من الملفات» أو انسخ الخلفيات إلى على الـ iPhone › AirCard-iOS.")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
@@ -137,7 +137,7 @@ struct TendiesView: View {
                             HStack(spacing: 10) {
                                 ProgressView()
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text("Flashing Wallpapers…").font(.subheadline.bold())
+                                    Text("جارٍ وميض الخلفيات…").font(.subheadline.bold())
                                     ProgressView(value: vm.tendiesFlashProgress)
                                 }
                             }
@@ -151,7 +151,7 @@ struct TendiesView: View {
                                 HStack(spacing: 8) {
                                     Spacer()
                                     Image(systemName: "sparkles")
-                                    Text("Flash \(selectedCount) Wallpaper\(selectedCount == 1 ? "" : "s")")
+                                    Text(selectedCount == 1 ? "وميض خلفية واحدة" : "وميض \(selectedCount) خلفيات")
                                     Spacer()
                                 }
                                 .font(.headline)
@@ -171,7 +171,7 @@ struct TendiesView: View {
                             HStack(spacing: 8) {
                                 Spacer()
                                 Image(systemName: "bolt.fill")
-                                Text("Respring (NeoSpring)")
+                                Text("إعادة تشغيل الواجهة (NeoSpring)")
                                 Spacer()
                             }
                             .font(.headline)
@@ -183,14 +183,14 @@ struct TendiesView: View {
                     }
                     .listRowInsets(EdgeInsets(top: 12, leading: 14, bottom: 12, trailing: 14))
                 } footer: {
-                    Text("Flashing will automatically trigger NeoSpring to respring the device and apply your new wallpapers.")
+                    Text("سيُفعّل الوميض تلقائياً NeoSpring لإعادة تشغيل الواجهة وتطبيق خلفياتك الجديدة.")
                 }
 
                 // Section 5: Flash Log (CompactLogView)
                 if !vm.tendiesFlashLog.isEmpty {
                     Section {
                         CompactLogView(
-                            title: "Flash Log (\(vm.tendiesFlashLog.count) lines)",
+                            title: "سجل الوميض (\(vm.tendiesFlashLog.count) سطر)",
                             lines: vm.tendiesFlashLog,
                             onClear: { vm.tendiesFlashLog.removeAll() }
                         )
@@ -200,7 +200,7 @@ struct TendiesView: View {
             .safeAreaInset(edge: .bottom) {
                 Color.clear.frame(height: 60)
             }
-            .navigationTitle("Wallpapers")
+            .navigationTitle("الخلفيات")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -291,7 +291,7 @@ struct TendieRowView: View {
                         .font(.caption2)
                         .foregroundColor(.secondary)
 
-                    Text("\(item.descriptorCount) item\(item.descriptorCount == 1 ? "" : "s")")
+                    Text(item.descriptorCount == 1 ? "عنصر واحد" : "\(item.descriptorCount) عناصر")
                         .font(.caption2)
                         .foregroundColor(.secondary)
                 }
@@ -344,15 +344,15 @@ struct TendieDetailSheet: View {
                     }
                 }
 
-                Section("Information") {
-                    detailRow(title: "Name", value: item.name)
-                    detailRow(title: "File Name", value: item.fileName)
-                    detailRow(title: "Type", value: item.posterType.rawValue)
-                    detailRow(title: "Descriptors", value: "\(item.descriptorCount)")
-                    detailRow(title: "Target Extension", value: item.posterType.extensionBundleId)
-                    detailRow(title: "Format", value: item.isContainer ? "App Container" : "Descriptor Archive")
+                Section("معلومات") {
+                    detailRow(title: "الاسم", value: item.name)
+                    detailRow(title: "اسم الملف", value: item.fileName)
+                    detailRow(title: "النوع", value: item.posterType.rawValue)
+                    detailRow(title: "الواصفات", value: "\(item.descriptorCount)")
+                    detailRow(title: "الامتداد المستهدف", value: item.posterType.extensionBundleId)
+                    detailRow(title: "التنسيق", value: item.isContainer ? "حاوية التطبيق" : "أرشيف الواصفات")
                     if item.unsafeContainer {
-                        detailRow(title: "Warning", value: "Contains SQLite database")
+                        detailRow(title: "تحذير", value: "يحتوي على قاعدة بيانات SQLite")
                     }
                 }
             }
@@ -360,7 +360,7 @@ struct TendieDetailSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button("تم") {
                         dismiss()
                     }
                 }
