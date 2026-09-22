@@ -1,0 +1,31 @@
+name: Build Arabic IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Show Xcode
+        run: xcodebuild -version && xcodebuild -list -project AirCard-iOS.xcodeproj || true
+
+      - name: Build unsigned IPA
+        run: bash build-ipa.sh Release
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: aircard-ar-ipa
+          path: build/AirCard-iOS.ipa
+          if-no-files-found: error
